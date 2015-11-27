@@ -20,7 +20,7 @@ module Mime
       extensions = {} of String => String
       type_defs = File.read(File.join(__DIR__, "types.json"))
 
-      (JSON.parse(type_defs) as Hash(String, JSON::Type)).each do |type, exts|
+      JSON.parse(type_defs).as_h.each do |type, exts|
         (exts as Array).each do |ext|
           ext = ext as String
           types[ext] = type
